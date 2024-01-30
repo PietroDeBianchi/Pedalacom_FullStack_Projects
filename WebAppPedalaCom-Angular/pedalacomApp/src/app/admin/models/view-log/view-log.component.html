@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="container mt-4">
+    <h2 class="mb-2">Sales Statistics Dashboard</h2>
+  
+    <div class="row">
+      <div class="col-md-6 p-0 my-3">
+        <div class="input-group">
+          <label for="productIdInput" class="sr-only">Product ID:</label>
+          <input type="text" class="form-control" id="productIdInput" [(ngModel)]="productId" placeholder="Enter Product ID">
+          <div class="input-group-append">
+            <button class="btn btn-search ms-2" type="button" (click)="getSalesDetailsID(productId)">Search</button>
+            <button class="btn btn-warning ms-2" type="button" (click)="getSalesDetails()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="producsSales.length === 0" class="alert alert-warning mt-3">
+    No product found with ID: {{ productId }}
+  </div>
+  <div class="row">
+    <div *ngFor="let product of producsSales" class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-header">Product ID: {{ product.productID }}</div>
+        <div class="card-body">
+          <p class="card-text">Last Order ID: {{ product.maxSalesOrderID }}</p>
+          <p class="card-text">Total Sales: {{ product.totalSales }}</p>
+          <p class="card-text">Total Quantity: {{ product.totalQuantity }}</p>
+          <p class="card-text">Total Revenue: {{ product.totalRevenue }}</p>
+
+          <!-- Extra Data Info (Add your custom calculations here) -->
+          <p class="card-text">
+            Average Revenue per Sale:
+            {{ (product.totalRevenue / product.totalSales) | number:'1.2-2' }}
+          </p>
+          <p class="card-text">
+            Product Price:
+            {{ (product.totalRevenue / product.totalQuantity) | number:'1.2-2' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showPagination" class="pagination mt-2 mb-4">
+    <div class="pagination mt-2 mb-4">
+      <button *ngFor="let page of getPages()" (click)="changePage(page)" [class.active]="page === pageNumber" class="btn btn-outline-primary">
+        {{ page }}
+      </button>
+    </div>
+  </div>
+</div>

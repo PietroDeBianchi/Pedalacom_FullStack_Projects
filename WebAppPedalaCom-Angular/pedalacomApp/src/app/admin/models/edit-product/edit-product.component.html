@@ -1,0 +1,196 @@
+
+  <button type="button" class="btn" style="background-color: #ffbe09; color: white;" data-bs-toggle="modal" [attr.data-bs-target]=" '#'+ 'c' +  productId"  (click)="getProductByID(productId)">
+    <i class="fa-solid fa-pen"></i>
+  </button>
+  
+  <div class="modal fade" [id]=" 'c' + productId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="singup-container mx-auto mb-5 pt-3">
+            <form class="row g-3 p-3" #frm="ngForm" >
+              <div>
+                <h3 class="h3 mb-3 fw-normal d-inline">Modifica del prodotto {{productId}}</h3>
+                <br>
+                <span style="font-size: 0.7em; color: red;">I campi * sono obbligatori</span>
+              </div>
+              <div class="col-md-3">
+                <label for="inputCategory" class="form-label">Categoria*</label>
+                <select id="inputCategory" class="form-select" #Category [value]="productEdit.productCategoryId" (change)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)">                 
+                  <option value="6"> Bici da strada</option>
+                  <option value="7"> Bici da turismo</option>
+                  <option value="32">Borraccia & Porta borraccia</option>
+                  <option value="39">Borse laterali</option>
+                  <option value="11">Catene</option>
+                  <option value="27">Calze</option>
+                  <option value="35">Caschi</option>
+                  <option value="14">Cuffie</option>
+                  <option value="21">Cerchioni</option>
+                  <option value="28">Collant</option>
+                  <option value="13">Deragliatori</option>
+                  <option value="9"> Freni</option>
+                  <option value="15">Forcelle</option>
+                  <option value="12">Guarniture</option>
+                  <option value="24">Guanti</option>
+                  <option value="29">Gillet</option>
+                  <option value="33">Kit di pulizia</option>
+                  <option value="37">Luci</option>
+                  <option value="38">Lucchetti</option>
+                  <option value="8"> Manubri</option>
+                  <option value="5"> Mountain Bikes</option>
+                  <option value="25">Maglie</option>
+                  <option value="26">Pantaloncini</option>
+                  <option value="22">Pantaloncini con bretelle</option>
+                  <option value="34">Parafanghi</option>
+                  <option value="30">Portabici</option>
+                  <option value="31">Portabici</option>
+                  <option value="17">Pedali</option>
+                  <option value="40">Pompe</option>
+                  <option value="41">Pneumatici e budelli</option>
+                  <option value="19">Selle</option>
+                  <option value="10">Staffe inferiori</option>
+                  <option value="23">Tappi</option>
+                  <option value="16">Telai da mountain bike</option>
+                  <option value="18">Telai da strada</option>
+                  <option value="20">Telai da turismo</option>
+                  <option value="36">Zaini idrici</option>            
+                </select>
+              </div>
+              <div class="col-md-9">
+                <label for="Name" class="form-label">Nome*</label>
+                <input type="text" class="form-control" id="name" placeholder={{productEdit.name}}  value={{productEdit.name}} required #Name (input)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)">
+              </div>
+              <div class="col-md-3">
+                <label for="inputColor" class="form-label">Colore*</label> 
+                <select id="inputColor" class="form-select" #Color [value]="productEdit.color" (change)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)">
+                    <option value="White">Bianco</option>
+                    <option value="Black">Nero</option>
+                    <option value="Gray">Grigio</option>
+                    <option value="Red">Rosso</option>
+                    <option value="Blue">Blu</option>
+                    <option value="Green">Verde</option>
+                    <option value="Yellow">Giallo</option>
+                    <option value="Orange">Arancione</option>
+                    <option value="Brown">Marrone</option>
+                    <option value="Beige">Beige</option>
+                    <option value="Pink">Rosa</option>
+                    <option value="Fucsia">Fucsia</option>
+                    <option value="Multi">Multicolore</option>        
+                </select>
+              </div>
+              <div class="col-md-8">
+                <label for="ProductNumber" class="form-label">Codice*</label>
+                <input type="text" class="form-control" id="ProductNumber" placeholder={{productEdit.productNumber}} value={{productEdit.productNumber}} required #ProductNumber (input)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)">
+              </div>
+              <div class="col-6">
+                <label for="ListPrice" class="form-label">Prezzo di listino*</label>
+                <input type="text" class="form-control" id="ListPrice" placeholder={{productEdit.listPrice}} value={{productEdit.listPrice}}  required #ListPrice (input)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)">
+              </div>
+              <div class="col-6">
+                <label for="StandardCost" class="form-label">Prezzo attuale*</label>
+                <input type="text" class="form-control" placeholder={{productEdit.standardCost}} value={{productEdit.standardCost}} id="StandardCost" name="password" required #StandardCost (input)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)"> 
+              </div>
+              <div class="col-6">
+                <label for="ThumbNailPhoto" class="form-label">Immagine*</label>
+                <br>
+                <img
+                  class="card-img-top img-fluid"
+                  [alt]="productEdit.name"
+                  [src]="productEdit.thumbNailPhoto"
+                  #Image
+                  />
+                <input #test type="file" (change)="getFile($event)" >
+              </div>
+
+              <div class="col-6">
+                <label for="Model" class="form-label" >Modello*</label>
+                <input
+                (input)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)"
+                  type="text"
+                  class="form-control"
+                  id="Model"
+                  placeholder="{{ productEdit.model}}"
+                  value="{{ productEdit.model }}"
+                  #Model
+                />
+              </div>
+
+              <div class="col-md-6">
+                <label for="Weight" class="form-label">Peso*</label>
+                <input type="text" class="form-control" id="Weight" placeholder={{productEdit.weight}} value={{productEdit.weight}} #Weight (input)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)">
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputSize" class="form-label" >Dimensioni*</label>
+                <select id="inputSize" class="form-select" #Size [value]="productEdit.size" (change)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)">                   
+                    <option value="60">60</option>
+                    <option value="58">58</option>
+                    <option value="56">56</option>
+                    <option value="54">54</option>
+                    <option value="52">52</option>
+                    <option value="50">50</option>
+                    <option value="48">48</option>
+                    <option value="46">46</option>
+                    <option value="44">44</option>
+                    <option value="42">42</option>
+                    <option value="40">40</option>
+                    <option value="38">38</option>
+                    <option value="XXL">XXL</option>
+                    <option value="XL">XL</option>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="S">S</option>
+                    <option value="XS">XS</option>
+                </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="Description" class="form-label">Descrizione*</label>
+                  <textarea 
+                  (input)="checkValue(Category.value, Name.value, Color.value, ProductNumber.value, ListPrice.value,StandardCost.value, Model.value, Weight.value, Size.value, Description.value)"
+                  name="Description" id="desc" 
+                  cols="40" rows="5" 
+                  placeholder="{{ productEdit.desc }}" value="{{ productEdit.desc }}"
+                  #Description></textarea>
+                </div>
+                <ng-container *ngIf="errorList.length != 0; then error else notError"></ng-container>
+                <ng-template #error>
+                  <div style="color: red" [innerHTML]="errorList[0]"></div>
+                </ng-template>
+                <ng-template #notError>
+                </ng-template>
+              <button type="submit" class="btn" (click)="postProduct(
+                Category.value,
+                Name.value,
+                Color.value,
+                ProductNumber.value,
+                ListPrice.value,
+                StandardCost.value,
+                Weight.value,
+                Size.value,
+                Description.value, 
+                Model.value
+                
+                )"
+                [disabled]="!allValueOk"
+                data-bs-dismiss="modal">Edit</button> 
+
+              <ng-container *ngIf="showMessage">
+                <div class="pt-2" style="color: green" *ngIf="okStatus" >
+                  Prodotto modificato con sucesso
+                </div>
+                <div class="pt-2" style="color: red" *ngIf="!okStatus">
+                  Errore nella modifica del prodotto
+                </div>
+              </ng-container>
+        
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

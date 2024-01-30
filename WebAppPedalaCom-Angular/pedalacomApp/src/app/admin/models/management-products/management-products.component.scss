@@ -1,0 +1,17 @@
+.big_search{
+    display: flex;
+}
+
+.small_search{
+    display: none;
+}
+
+@media screen and (max-width: 800px){
+    .big_search{
+        display: none;
+    }
+
+    .small_search{
+        display: flex;
+    }
+}

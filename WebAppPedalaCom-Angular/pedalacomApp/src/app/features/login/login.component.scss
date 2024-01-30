@@ -1,0 +1,35 @@
+form {
+    background-color: var(--main-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+.singin-container {
+    max-width: 360px;
+    padding-bottom: 105px;
+}
+
+.singup-link {
+    color: var(--darker-accent);
+
+    &:hover {
+        color: var(--text);
+    }
+}
+
+.form-check-input {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.btn {
+    color: var(--text);
+    background-color: var(--primary);
+
+    &:hover {
+        color: rgb(238, 236, 231);
+        background-color: var(--darker-accent);   
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+}

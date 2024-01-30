@@ -1,0 +1,19 @@
+
+
+<div class=" justify-content-center mb-3 big_search">
+    <input #searchParamsMax type="text" name="SearchParams" id="SearchParams" class="form-control w-25"  placeholder="Cerca un prodotto">
+    <button class="btn btn-outline-success btn-cerca" (click)="getProductByName(searchParamsMax.value)">Cerca</button>
+</div>
+
+<div class=" justify-content-center mb-3 small_search">
+    <input #searchParams type="text" name="SearchParams" id="SearchParams" class="form-control w-75"  placeholder="Cerca un prodotto">
+    <button class="btn btn-outline-success btn-cerca" (click)="getProductByName(searchParams.value)">Cerca</button>
+</div>
+
+<div *ngIf="!noProduct">
+    <app-table  [products]="products" [paginationInfo]="paginationInfo" [searchData]="searchParams.value"></app-table>
+</div>
+
+<div *ngIf="noProduct" style="text-align: center;">
+    Nessun prodotto trovato
+</div>

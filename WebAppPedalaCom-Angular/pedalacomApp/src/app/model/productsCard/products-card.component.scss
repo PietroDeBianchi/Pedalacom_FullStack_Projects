@@ -1,0 +1,29 @@
+.product-card {
+  border-radius: 8px;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  background-color: white;
+}
+
+.product-card:hover {
+  /* Change background to a lighter shade of gray on hover */
+  background-color: #eeeeee81; /* Change background to a lighter shade of gray on hover */
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3); /* Add a darker shadow on hover */
+}
+
+.img-top {
+  width: 300px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px 0 0 8px;
+  mix-blend-mode: multiply;
+
+}
+
+@media (max-width: 900px){
+  .mycard{
+    display: flex;
+    flex-direction: column;
+  }
+}

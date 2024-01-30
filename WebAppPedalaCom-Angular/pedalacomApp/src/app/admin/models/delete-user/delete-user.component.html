@@ -1,0 +1,36 @@
+
+<div class="singup-container mx-auto main-container container">
+    <form *ngIf="!userDelete" #frm="ngForm">
+      <div class="info-container">
+        <h3 class="fw-normal d-inline">Elimina utente</h3>
+        <br>
+        <span>Inserisci la mail dell'utente che desideri eliminare:</span>
+        <div class="form_container">
+            <input type="text" (keyup)="changeEmail(email.value)" #email class="form-control">
+            <button type="button" class="btn" style="background-color: var(--danger); color: white;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Elimina
+            </button>
+          </div>
+        </div>
+      </form>
+      <h2 class="pt-2" style="text-align: center;color: green" *ngIf="userDelete">Utente eliminato correttamente</h2>
+      <div class="pt-2" style="color: red" *ngIf="userError">Utente non trovato</div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Elimina utente</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Sei sicuro di voler eliminare l'utente: {{userEmail}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+            <button type="button" class="btn" style="background-color: var(--danger); color: white;" (click)="deleteUser(userEmail)" data-bs-dismiss="modal">Conferma</button>
+          </div>
+        </div>
+      </div>
+
+  </div>

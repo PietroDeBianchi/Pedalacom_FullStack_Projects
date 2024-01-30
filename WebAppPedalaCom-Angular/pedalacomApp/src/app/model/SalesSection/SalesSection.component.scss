@@ -1,0 +1,55 @@
+.sectionContainer {
+    height: max-content;
+    
+    section {
+        background: linear-gradient(to bottom, var(--section-background) 70%, var(--section-darker-background) 30%);
+        min-height: 400px;
+
+        .rows {
+            display: flex;
+            flex-wrap: wrap;
+
+            button {
+                background-color: var(--primary);
+                font-size: 23px;
+                text-transform: uppercase;
+                &:hover {
+                    color: rgb(238, 236, 231);
+                    background-color: var(--darker-accent);   
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            
+                }
+            }
+        }
+.desc-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+        @media (max-width: 1360px) and (min-width: 1070px) {
+            .rows{
+                padding-top: 7%;
+            }
+        }
+    
+        @media (max-width: 1070px) and (min-width: 940px) {
+            .rows {
+                padding-top: 9%;
+            }
+        }
+
+        @media (max-width: 940px) and (min-width: 825px) {
+            .rows {
+                padding-top: 14%;
+            }
+        }
+    
+        @media (max-width: 826px) {
+            .rows {
+                display: block;
+                border: none;
+                padding-top: 2%;
+            }
+        }
+    }
+}

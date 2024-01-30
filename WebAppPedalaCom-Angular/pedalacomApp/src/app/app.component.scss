@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    min-height: calc(100vh - (63px + 145px));
+    margin-top: 63px; // set equal to header height(63px)
+}

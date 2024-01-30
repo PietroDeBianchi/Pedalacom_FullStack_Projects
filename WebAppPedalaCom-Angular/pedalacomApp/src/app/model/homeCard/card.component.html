@@ -1,0 +1,16 @@
+<div class="card my-3">
+    <img
+      class="card-img-top img-fluid"
+      [alt]="product.name"
+      [src]="product.thumbNailPhoto"
+    />
+    <div class="card-body text-center">
+      <h5 class="pt-1 bike-name">{{product.name}}</h5>
+    </div>
+    <div class="info-container">
+      <span class="badge text-bg-warning fs-6">{{ product.listPrice | number:'1.2-2'}} €</span>
+      <div class="mt-2 text-center">
+        <span class="popular-check" style="color: white; background-color: rgba(0, 0, 0, 0.537); padding: 5px; border-radius: 15px;">Più popolare <span class="text-warning"><i class="fa-solid fa-star"></i></span> </span>
+      </div>
+    </div>
+</div>

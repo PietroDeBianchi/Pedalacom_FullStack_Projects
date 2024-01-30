@@ -1,0 +1,53 @@
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col"><div class="display_none_small">Id</div></th>
+				<th scope="col">Codice</th>
+				<th scope="col"><div class="display_none_small">Nome</div></th>
+				<th scope="col"><div class="display_none_small">Prezzo</div></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="small_table" *ngFor="let product of products;  let i = index">
+				<td><div class="display_none_small">{{product.productId}}</div></td>
+				<td>{{product.productCode}}</td>
+				<td ><div class="display_none_small">{{product.productName}}</div></td>
+				<td ><div class="display_none_small">{{product.productPrice | number:'1.2-2'}}€</div></td>
+				<td><app-edit-product [productId] = "product.productId"></app-edit-product> 
+					<button data-bs-toggle="modal" type="button" class="btn ms-4" style="background-color: var(--danger); color: white;"  data-bs-target="#exampleModal" (click)="modalProduct.productId = product.productId; modalProduct.productName = product.productName; modalProduct.productCode = product.productCode">
+						<i class="fa-solid fa-trash"></i>
+					</button>
+				</td>
+			</tr>   
+		</tbody>
+	</table>	
+</div>
+
+<!--Paginazione-->
+<div class="pagination">
+	<!-- Pulsanti delle pagine -->
+	<button *ngFor="let page of getPages()" (click)="changePage(page)" [class.active]="page === pageNumber">
+		{{ page }}
+	</button>
+</div>	
+
+<!--Modale delete-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Elimina prodotto</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				Sei sicuro di voler eliminare il prodotto {{modalProduct.productName}} con codice {{modalProduct.productCode}} ? 
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+				<button type="button" class="btn" style="background-color: var(--danger); color: white;" (click)="deleteProduct(modalProduct.productId.toString())" data-bs-dismiss="modal" >Conferma</button>
+			</div>
+		</div>
+	</div>
+</div>

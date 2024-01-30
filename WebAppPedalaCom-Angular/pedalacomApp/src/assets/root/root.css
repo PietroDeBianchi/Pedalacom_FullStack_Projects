@@ -1,0 +1,22 @@
+:root {
+    --main-background: #efeeee;
+    
+    --core-background: #f8f9fa;
+    --core-darker-background: #dcdee0;
+
+    --section-background: #e1dddddb;
+    --section-darker-background: #c1bebedb;
+
+    --primary: #6fa8be;
+    --darker-primary: #5c9ab3;
+
+    --accent: #458D80;
+    --darker-accent: #3a766b;
+
+    --secondary: #f1f5f9;
+
+    --danger: #bd2a1f;
+
+    --text: #02050d;
+
+}

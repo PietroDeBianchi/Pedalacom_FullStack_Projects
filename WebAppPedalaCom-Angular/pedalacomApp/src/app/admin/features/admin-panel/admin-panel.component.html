@@ -1,0 +1,62 @@
+<div class="background p-3">
+	<div class="main_container">
+        <div class="title container mt-2">
+            <h1 *ngIf="stringPage == ''" class="py-2" style="text-align: center;">-- Sezione Admin --</h1>
+        </div>
+        <!--navbar-->
+		<div *ngIf="stringPage == ''" class="admin_navbar">
+            <button class="btn" (click)="stringPage= 'addProducts'">
+                Aggiungi Prodotto
+            </button>
+
+            <button class="btn" (click)="stringPage ='managementProducts'">
+                Gestione Prodotti
+            </button>
+            
+            <button class="btn" (click)="stringPage='removeUser'">
+                Elimina Utente
+            </button>
+            
+            <button class="btn" (click)="stringPage='viewLog'">
+                Visualizza Log
+            </button>
+            
+            <button class="btn" (click)="stringPage ='viewAppError'">
+                Visualizza Errori
+            </button>
+		</div>
+		<!-- MAIN DISPLAY form -->
+        <!-- <app-admin-main-panel></app-admin-main-panel> -->
+            <button class="btn align-self-center mt-2 px-2 py-1 admin-back" *ngIf="stringPage !== ''" (click)="stringPage = ''">
+                <i style="font-size: 1.7em;" class="fa-solid fa-arrow-left"></i>
+            </button>
+                  <main>
+            <div *ngIf="stringPage == 'addProducts'; then addProducts else Ko"></div>
+            <ng-template #addProducts>
+                <app-add-products></app-add-products>
+            </ng-template>
+            <ng-template #Ko>
+            </ng-template>
+            <!--   **************************************    -->
+            <div *ngIf="stringPage == 'managementProducts'; then removeProducts else Ko"></div>
+            <ng-template #removeProducts>
+                <app-management-products></app-management-products>
+            </ng-template>
+
+            <div *ngIf="stringPage == 'removeUser'; then removeUser else Ko"></div>
+            <ng-template #removeUser>
+                <app-delete-user></app-delete-user>
+            </ng-template>
+
+            <div *ngIf="stringPage == 'viewLog'; then viewLog else Ko"></div>
+            <ng-template #viewLog>
+                <app-view-log></app-view-log>
+            </ng-template>
+
+            <div *ngIf="stringPage == 'viewAppError'; then viewAppError else Ko"></div>
+            <ng-template #viewAppError>
+                <app-view-error></app-view-error>
+            </ng-template>
+        </main>
+	</div>
+</div>

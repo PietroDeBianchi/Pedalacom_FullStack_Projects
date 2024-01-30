@@ -1,0 +1,51 @@
+
+<div class="container pt-5 pb-2">
+
+    <div *ngIf="flagLoad == false; else infoProduct" class = "loading_container">
+        <div class="lds-dual-ring"></div>
+    </div>
+
+    <ng-template #infoProduct>
+        <div *ngIf="flagNotLogged == true" class="alert alert-warning" style="bottom: 1em; margin: 0px;" role="alert">
+            Per poter comprare puoi loggarti da <a routerLink="/login" class="alert-link">qui!</a>
+        </div>        
+
+        <div style="cursor: pointer;" (click)="backPage()">
+            <i class="fa-solid fa-arrow-left" ></i>
+        </div>
+    <div class="row" >
+        <div class="col-md-5 image-container h-100">
+            <!-- Use Angular binding to dynamically set the image source -->
+            <img [src]="productData?.thumbNailPhoto" [alt]="productData?.name" class="img-fluid">
+        </div>
+        <div class="col-md-7 description-container px-4">
+            <div class="d-flex flex-column justify-content-center h-100 py-4">
+                <!-- Use Angular binding to dynamically set the product name -->
+                <h2 class="mb-3">{{ productData?.name }}</h2>
+                <!-- Use Angular binding to dynamically set the product description -->
+                <div>
+                    <p class="mb-1"><strong>Prezzo: € </strong>{{ productData?.listPrice | number:'1.2-2'}}</p>
+                    <p><strong>ID: </strong>{{ productData?.productId }}</p>
+                    <span *ngIf="productData?.size" class="me-2"><strong>Dimensione:</strong> {{ productData.size }} </span>
+                    <span *ngIf="productData?.weight" class="me-2"><strong> Peso:</strong> {{ productData.weight }} gr.</span>
+                </div>
+                <div class="details-container my-2">
+                    <h3>Dettagli</h3>
+                    <!-- Use Angular binding to dynamically set the product details -->
+                    <p>{{ productData?.productModel?.productModelProductDescriptions[0]?.productDescription?.description || 'Description not available' }}</p>
+                </div>
+                <!-- Quantity Input (you may use a dropdown or other input types based on your design) -->
+                <div class="form-group">
+                    <label for="quantity">Quantità:</label>
+                    <!-- Use Angular binding to dynamically set the initial quantity -->
+                    <input type="number" id="quantity" class="form-control mt-2 w-25" value="1" min="1">
+                </div>
+                <div class="mt-4">
+                    <button class="btn me-4" id="addToCartBtn" (click)="sendCart()">Aggiungi al carello</button>
+                    <button class="btn" id="buyNowBtn" >Compra ora</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </ng-template>
+</div>

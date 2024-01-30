@@ -1,0 +1,33 @@
+<div class="position-relative">
+<!-- Per primo Login -->
+  <div class="mt-2 position-absolute top-0 start-0 z-3">
+    <div *ngIf="firstAccess; then OkLogin"></div>
+    <ng-template #OkLogin>
+      <div class="alert alert-success">Login effettuato con successo!</div>
+    </ng-template>
+    <!-- Per prima registrazione -->
+    <div *ngIf="firstRegistration; then OkRegister"></div>
+    <ng-template #OkRegister>
+      <div class="alert alert-success">Registrazione effettuato con successo!</div>
+    </ng-template>
+  </div>
+
+  <app-carousel></app-carousel>
+
+<div class = "loading_container" *ngIf="!this.load; else slickCarousel" >
+  <div class="lds-dual-ring"></div>
+</div>
+
+  <ng-template #slickCarousel>
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+    style="background: var(--main-background)">
+    <div ngxSlickItem *ngFor="let product of products" class="slide" (click)="navigateToProductPage(product.productId)">
+      <div style="padding: 10px;">
+        <app-card [product]="product"></app-card>
+      </div>
+    </div>
+  </ngx-slick-carousel>
+  </ng-template>
+
+  <app-saleSection></app-saleSection>
+</div>

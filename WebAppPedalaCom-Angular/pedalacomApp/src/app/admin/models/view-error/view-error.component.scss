@@ -1,0 +1,44 @@
+.modal-container {
+    max-width: 80vw;
+    /* Adjust the max-width according to your design */
+    overflow: auto;
+}
+
+.full-stack-trace {
+    font-size: 14px;
+    /* Adjust the font size according to your design */
+    word-wrap: break-word;
+    /* This helps break long words to fit within the container */
+    white-space: pre-wrap;
+    /* Preserve formatting, including newline characters */
+}
+
+.btn-color{
+    background-color: var(--primary);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    button {
+        padding: 8px 12px;
+        margin: 0 5px;
+        background-color: #556772;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    button.active {
+        background-color: #3498db;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+}

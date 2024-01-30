@@ -1,0 +1,145 @@
+main{
+    width: 85%;
+}
+
+.pressedBtn {
+    background-color: var(--accent) !important;
+    border: 1.5px solid var(--darker-accent) !important;
+}
+
+#v1:hover, #v2:hover, #v3:hover, #v4:hover {
+    background-color: var(--core-darker-background);
+}
+
+div.header-element {
+    background-color: var(--core-background) !important;
+    >div.header-container {
+        background-color: var(--core-background) !important;
+        
+        p > span {
+            color: var(--primary);
+        }
+
+        button {
+            background-color: var(--primary);
+            border: 1.5px solid var(--darker-primary);
+            font-size: 12px !important;
+            height: 20px;
+
+            &:after {
+                content: none;
+            }
+
+            @media (max-width: 2560px) and (min-width: 1070px) {
+                font-size: 15px !important;
+                height: 25px;
+            }
+        }
+
+        .dropdown-menu {
+            background-color: var(--core-background) !important;
+        }
+    }
+}
+
+div.offcanvas-body {
+    .container > button {
+        background-color: var(--primary);
+        border: 1.5px solid var(--darker-primary);
+        font-size: 17px !important;
+        margin-bottom: 20px;
+    }
+}
+
+div.filter-bar{
+    width: 15%;
+    height: 100%;
+    min-height: 560px;
+
+    
+    @media (max-width: 2560px) and (min-width: 1900px) {
+        min-height: 827px;
+    }
+
+    div:not([class]){
+        margin-bottom: 5px;
+        cursor: pointer;
+        
+        p:first-child{
+            &:hover { 
+                background-color: var(--core-darker-background);
+            }
+            
+            &:active {
+                background-color: var(--section-background);
+            }
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+    button {
+        padding: 8px 12px;
+        margin: 0 5px;
+        background-color: #556772;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    button.active {
+        background-color: #3498db;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    button:hover {
+        background-color: #2980b9;
+    }
+}
+@media (max-width: 900px){
+    .card-container{
+        justify-content: center;
+    }
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #312626;
+    border-color: #312626 transparent #312626 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loading_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }

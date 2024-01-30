@@ -1,0 +1,196 @@
+<div class="header-element">
+	
+	<div class="d-flex flex-wrap justify-content-between align-items-center header-container mx-5 py-3">
+
+		<div *ngIf="products && products.length > 0; else noProducts">
+			<p class="m-0">{{ page }} - {{ totalPage }} pagine in <span class="fw-bolder">#{{ searchData }}</span></p>
+		</div>
+		<ng-template #noProducts>
+			<p class="m-0">Nessun prodotto disponibile</p>
+			
+		</ng-template>	
+		<div class="btn-group d-md-none d-sm-none d-none d-lg-block">
+			<button type="button" class="dropdown-toggle btn rounded-lg shadow p-0 px-2" data-bs-toggle="dropdown"
+				aria-expanded="false">
+				Ordina per: {{ valueFilter }} <i class="fa-solid fa-chevron-down"></i>
+			</button>
+			<ul class="dropdown-menu py-0">
+				<li><a style="cursor: pointer;" #v1 class="dropdown-item border-bottom" [style.display]="v1.text == valueFilter ? 'none' : 'block'"
+						(click)="valueFilter=v1.text; GetProducts(this.searchData, this.pageNumber, this.valueFilter , this.filterParams)" id="v1">In Evidenza</a></li>
+				<li><a style="cursor: pointer;" #v2 class="dropdown-item border-bottom" [style.display]="v2.text == valueFilter ? 'none' : 'block'"
+						(click)="valueFilter=v2.text; GetProducts(this.searchData, this.pageNumber, this.valueFilter , this.filterParams)" id="v2">Prezzo: In ordine crescente</a></li>
+				<li><a style="cursor: pointer;" #v3 class="dropdown-item border-bottom" [style.display]="v3.text == valueFilter ? 'none' : 'block'"
+						(click)="valueFilter=v3.text; GetProducts(this.searchData, this.pageNumber, this.valueFilter , this.filterParams)" id="v3">Prezzo: In ordine decrescente</a></li>
+				<li><a style="cursor: pointer;" #v4 class="dropdown-item" [style.display]="v4.text == valueFilter ? 'none' : 'block'"
+						(click)="valueFilter=v4.text; GetProducts(this.searchData, this.pageNumber, this.valueFilter , this.filterParams)" id="v4">Nome: In ordine crescente</a></li>
+				<li><a style="cursor: pointer;" #v5 class="dropdown-item" [style.display]="v5.text == valueFilter ? 'none' : 'block'"
+						(click)="valueFilter=v5.text; GetProducts(this.searchData, this.pageNumber, this.valueFilter , this.filterParams)" id="v5">Nome: In ordine decrescente</a></li>
+			</ul>
+		</div>
+		<div class="d-md-block d-lg-none">
+			<button class="btn rounded-lg shadow p-0 px-2" (click)="open(content)">
+				Filtri <i class="fa-solid"
+					[ngClass]="{'fa-chevron-down': !isOffcanvasOpen, 'fa-chevron-up': isOffcanvasOpen}"></i>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="mx-1">
+	<div class="d-flex mb-4 card-container">
+		<!-- FILTER SIDE BAR -->
+		<div class="d-md-none d-sm-none d-none d-lg-block filter-bar p-2 border shadow-lg">
+
+			<div class="container fw-bolder">Filtra:</div>
+	  
+			<div>
+			  <p class="py-1 m-0 border rounded text-center" (click)="populateFilterView('Category')">Categorie</p>
+			  <ng-container *ngFor="let item of categoryList">
+				<div class="flex-row w-100" [style.display]="filterView.includes('Category') ? 'flex' : 'none'">
+				  <div class="p-1 w-10">
+					<input class="form-check-input mt-0" (change)="populateFilter(item.data)" type="checkbox">
+				  </div>
+				  <div class=" w-100 border-bottom">{{ item.ita }}</div>
+				</div>
+			  </ng-container>
+			</div>
+	  
+			<div>
+			  <p class="py-1 m-0 border rounded text-center" (click)="populateFilterView('Components')">Componenti</p>
+			  <ng-container *ngFor="let item of componentsList">
+				<div class="flex-row w-100" [style.display]="filterView.includes('Components') ? 'flex' : 'none'">
+				  <div class="p-1 w-10">
+					<input class="form-check-input mt-0" (change)="populateFilter(item.data)" type="checkbox">
+				  </div>
+				  <div class="w-100 border-bottom">{{ item.ita }}</div>
+				</div>
+			  </ng-container>
+			</div>
+	  
+			<div>
+			  <p class="py-1 m-0 border rounded text-center" (click)="populateFilterView('Cloths')">Vestiario</p>
+			  <ng-container *ngFor="let item of clothingsList">
+				<div class="flex-row w-100" [style.display]="filterView.includes('Cloths') ? 'flex' : 'none'">
+				  <div class="p-1 w-10">
+					<input class="form-check-input mt-0" (change)="populateFilter(item.data)" type="checkbox">
+				  </div>
+				  <div class="w-100 border-bottom">{{ item.ita }}</div>
+				</div>
+			  </ng-container>
+			</div>
+	  
+			<div>
+			  <p class="py-1 m-0 border rounded text-center" (click)="populateFilterView('Accessories')">Accessori</p>
+			  <ng-container *ngFor="let item of accessoriesList">
+				<div class="flex-row w-100" [style.display]="filterView.includes('Accessories') ? 'flex' : 'none'">
+				  <div class="p-1 w-10">
+					<input class="form-check-input mt-0" (change)="populateFilter(item.data)" type="checkbox">
+				  </div>
+				  <div class=" w-100 border-bottom">{{ item.ita }}</div>
+				</div>
+			  </ng-container>
+			</div>
+	  
+		  </div>
+		<!-- MAIN DISPLAY PRODUCTS -->
+		<main class="">
+			
+			<div *ngIf="products && products.length > 0; else noPageProducts">
+				<div class="row card-container">
+					<!-- Iterate each product as product -->
+					<div *ngFor="let product of products" class="col-12" (click)="navigateToProductPage(product.productId)">
+						<!-- Share product info for each product-card -->
+						<app-products-card [product]="product"></app-products-card>
+					</div>
+				</div>
+			</div>
+			<ng-template #noPageProducts>
+				<div class="d-flex justify-content-center">
+					
+					<div *ngIf="flagLoad == true; else noProduct" class = "loading_container">
+						<div class="lds-dual-ring"></div>
+					</div>
+					<ng-template #noProduct>
+						<div>
+					<h4 class="m-0">Nessun prodotto disponibile</h4>
+						</div>
+					</ng-template>	
+				</div>
+
+				
+			</ng-template>			
+
+			<!-- <input #test type="file" (change)="getFile($event)">
+			<img [src]="myImg" alt="test"> -->
+
+			<div class="pagination">		
+				<!-- Pulsanti delle pagine -->
+				<button *ngFor="let page of getPages()" (click)="changePage(page)" [class.active]="page === pageNumber">
+					{{ page }}
+				</button>
+			</div>	
+		</main>	
+	</div>	
+	<ng-template #content>
+		<div class="offcanvas-header">
+			<h4 class="offcanvas-title">Filtra per: </h4>
+			<button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+		</div>populateFilter
+		<div class="offcanvas-body">
+			<div class="container d-flex flex-row gap-3">
+				<button #v1 type="button" class="btn rounded-lg shadow p-0 px-2" [ngClass]="{ 'pressedBtn': btnID === 'v1' }" (click)="mobileFilterData(v1, 'v1')">In Evidenza</button>
+				<button #v2 type="button" class="btn rounded-lg shadow p-0 px-2" [ngClass]="{ 'pressedBtn': btnID === 'v2' }" (click)="mobileFilterData(v2, 'v2')">Prezzo: In ordine crescente</button>
+				<button #v3 type="button" class="btn rounded-lg shadow p-0 px-2" [ngClass]="{ 'pressedBtn': btnID === 'v3' }" (click)="mobileFilterData(v3, 'v3')">Prezzo: In ordine decrescente</button>
+				<button #v4 type="button" class="btn rounded-lg shadow p-0 px-2" [ngClass]="{ 'pressedBtn': btnID === 'v4' }" (click)="mobileFilterData(v4, 'v4')">Nome: In ordine crescente</button>
+				<button #v5 type="button" class="btn rounded-lg shadow p-0 px-2" [ngClass]="{ 'pressedBtn': btnID === 'v5' }" (click)="mobileFilterData(v5, 'v5')">Nome: In ordine decrescente</button>
+			</div>
+			<div>
+				<p class="py-1 m-0">Categorie: </p>
+				<ng-container *ngFor="let item of categoryList">
+					<div class="d-flex flex-row w-100">
+						<div class="p-1 w-10">
+							<input class="form-check-input mt-0" (change)="populateFilter(item.data)" type="checkbox">
+						</div>
+						<div class="w-100 border-bottom">{{ item.ita }}</div>
+					</div>
+				</ng-container>
+			</div>
+	
+			<div>
+				<p class="py-1 m-0">Componenti: </p>
+				<ng-container *ngFor="let item of componentsList">
+					<div class="d-flex flex-row w-100">
+						<div class="p-1 w-10 border-bottom">
+							<input class="form-check-input mt-0" (change)="populateFilter(item.data)" type="checkbox">
+						</div>
+						<div class="w-100 border-bottom">{{ item.ita }}</div>
+					</div>
+				</ng-container>
+			</div>
+	
+			<div>
+				<p class="py-1 m-0">Vestiario: </p>
+				<ng-container *ngFor="let item of clothingsList">
+					<div class="d-flex flex-row w-100">
+						<div class="p-1 w-10">
+							<input class="form-check-input mt-0" (change)="populateFilter(item.data)" type="checkbox">
+						</div>
+						<div class="w-100 border-bottom">{{ item.ita }}</div>
+					</div>
+				</ng-container>
+			</div>
+	
+			<div>
+				<p class="py-1 m-0">Accessori: </p>
+				<ng-container *ngFor="let item of accessoriesList">
+					<div class="d-flex flex-row w-100">
+						<div class="p-1 w-10">
+							<input class="form-check-input mt-0" (change)="populateFilter(item.data)" type="checkbox">
+						</div>
+						<div class="w-100 border-bottom">{{ item.ita }}</div>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+	</ng-template>
+</div>

@@ -1,0 +1,36 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    button {
+        padding: 8px 12px;
+        margin: 0 5px;
+        background-color: #556772;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    button.active {
+        background-color: #3498db;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    button:hover {
+        background-color: #2980b9;
+    }
+}
+
+.table{
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 800px){
+    .display_none_small{
+        display: none;
+    }
+}

@@ -1,0 +1,17 @@
+<div class="container my-2 product-card" style="cursor: pointer;">
+    <div class="mycard d-flex gap-3">
+        <img [src]="product.photo" class="img-top img-fluid" alt="Card image cap" width="300px">
+        <div class="d-flex flex-column justify-content-center">
+            <div class="">
+                <h5 class="card-title mb-2"> {{product.productName}}</h5>
+                <div class="card-text">
+                    <b class="mb-1">ID:</b> <span class="text-muted"> {{product.productId}}</span><br>
+                    <b class="mb-1">Prezzo:</b> <span class="text-muted"> {{product.productPrice | number:'1.2-2'}}€</span><br>
+                    <b>Categoria:</b> <span class="text-muted"> {{product.productCategory}}</span><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  

@@ -1,0 +1,129 @@
+.card-img-top{
+  width: 500px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card {
+  position: relative;
+  height: 300px;
+
+  .info-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0;
+    text-align: end;
+
+    span {
+      font-size: 11px;
+    }
+  }
+
+  .popular-check {
+    margin-right: 4px;
+  }
+}
+
+.bike-model {
+  font-weight: 600;
+  font-size: 9px;
+
+  @media (min-width: 576px) {
+    font-size: 11px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 13px;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 15px;
+  }
+
+  @media (min-width: 1056px) {
+    font-size: 17px;
+  }
+}
+
+.bike-name {
+  font-size: 11px;
+
+  @media (min-width: 576px) {
+    font-size: 13px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 17px;
+  }
+
+  @media (min-width: 1056px) {
+    font-size: 19px;
+  }
+}
+
+.badge {
+  font-size: 12px;
+
+  @media (min-width: 576px) {
+    font-size: 15px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 17px;
+  }
+
+  @media (min-width: 1056px) {
+    font-size: 18px;
+  }
+}
+
+.stock-check {
+  font-size: 10px;
+  font-weight: 500;
+
+  @media (min-width: 576px) {
+    font-size: 11px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 11.5px;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 1056px) {
+    font-size: 12.5px;
+  }
+}
+
+.btn {
+  font-size: 10px;
+  font-weight: 700;
+
+  @media (min-width: 576px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 13px;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 13.5px;
+  }
+
+  @media (min-width: 1056px) {
+    font-size: 14px;
+  }
+}

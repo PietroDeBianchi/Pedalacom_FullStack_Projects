@@ -1,0 +1,37 @@
+form {
+    background-color: var(--main-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    font-weight: 500;
+}
+
+.singup-container {
+    max-width: 560px;
+}
+
+.form-check-input {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+input, select {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form_container{
+    display: flex;
+}
+
+.main-container{
+    form{
+        padding: 20px;
+        .info-container{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            .form_container{
+                display: flex;
+            }
+        }
+    }
+}

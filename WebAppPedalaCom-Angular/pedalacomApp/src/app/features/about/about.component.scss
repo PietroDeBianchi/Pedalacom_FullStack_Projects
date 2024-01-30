@@ -1,0 +1,35 @@
+.card-container{
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin: auto;
+    padding-bottom: 50px;
+    .single-card{
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        width: calc(1000px / 3 - 30px);
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        align-items: center;
+        gap: 10px;
+        height: 350px;
+        text-decoration: none;
+        color: rgb(80, 80, 80);
+        img{
+            object-fit: cover;
+            width: 100%;
+            height: 300px;
+        }
+    }
+    .single-card:hover{
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .card-container{
+        justify-content: center;
+    }
+  }

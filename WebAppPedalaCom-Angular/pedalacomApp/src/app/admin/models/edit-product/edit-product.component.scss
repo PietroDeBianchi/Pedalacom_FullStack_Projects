@@ -1,0 +1,31 @@
+form {
+    background-color: var(--main-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    font-weight: 500;
+}
+
+.singup-container {
+    max-width: 560px;
+}
+
+.form-check-input {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+input, select {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    color: var(--text);
+    background-color: var(--primary);
+
+    &:hover {
+        color: rgb(238, 236, 231);
+        background-color: var(--darker-accent);   
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+    }
+}

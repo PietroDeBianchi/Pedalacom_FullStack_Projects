@@ -1,0 +1,69 @@
+<div *ngIf="userLogged; then Ko else Ok"></div>
+<ng-template #Ko>
+    <div class="container mt-5 py-2">
+        <h2>Carrello</h2>
+        <!-- Cart Items -->
+        <!-- Example Cart Item (You can loop through your cart items dynamically) -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div *ngIf="cartInfo.length == 0; else withProduct" >
+                        <h1>No product</h1>
+                    </div>
+                    
+                    <ng-template #withProduct>       
+                    <div *ngFor="let item of cartInfo; let i = index" class="cart-item-container d-flex align-items-center py-2 card-cart">
+                        <div class="col-md-2">
+                            <img [src]="item.thumbNailPhoto" [alt]="item.nameProd" class="Img-setting" >
+                        </div>
+                        <div class="col-md-4" (mouseenter)="setHoverIndex(i)" (mouseleave)="clearHoverIndex()" style="cursor: pointer;" [ngStyle]="{'color': hoverIndex === i ? 'blue' : 'initial'}" (click)="redirectProd(item.prodID)">
+                            <h5 class="card-title text-mobile"  c> {{item.nameProd}}</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control input-quantity" [value]="item.quantity" min="1">
+                        </div>
+                    
+                        <div class="col-md-2">
+                            <p class="card-text ms-2"><strong>{{item.listPrice | number:'1.2-2'}} €</strong></p>
+                        </div>
+                        
+                        <div class="col-md-2" style="z-index: 1;">
+                            <!-- Option to Remove Item from Cart -->
+                            <button class="btn btn-danger" (click)="removeProduct(item.cartID)"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                    
+                    </ng-template>
+            </div>
+        </div>
+        </div>
+    
+        <!-- Cart Summary -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Sommario</h5>
+                <p class="card-text"><strong>Totale: €{{tot | number:'1.2-2'}}</strong></p>
+                <a href="#" class="btn btn-success">Vai al pagamento</a>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #Ok>
+    <div>
+        <div class="container pt-5">
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="card empty-cart">
+                  <div class="card-body text-center">
+                    <h2 class="card-title">Carrello</h2>
+                    <p class="card-text">Il carrello è accessibile solo per gli utenti loggati.</p>
+                    <p class="card-text">Effettua il login o crea un profilo per accedere al carrello.</p>
+                    <a routerLink="/login" class="btn me-3">Login</a>
+                    <a routerLink="/register" class="btn">Sign Up</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</ng-template>

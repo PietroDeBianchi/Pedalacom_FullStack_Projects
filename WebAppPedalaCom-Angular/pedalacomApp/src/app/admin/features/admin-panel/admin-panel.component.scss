@@ -1,0 +1,31 @@
+
+
+.admin_navbar{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 20px;
+    justify-content: center;
+    gap: 5px;
+    height: 100%;
+    button{
+        color: white;
+        text-shadow: 1px 1px 1px black;
+        background-color: var(--accent);
+    }
+    button:hover{
+        background-color: var(--darker-accent);
+    }
+}
+
+.main_container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.admin-back:hover {
+    background-color: var(--darker-accent);
+    color: white;
+}
